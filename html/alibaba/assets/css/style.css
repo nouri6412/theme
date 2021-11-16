@@ -13,25 +13,48 @@
     font-weight: normal;
 }
 
-*,body{
+*, body {
     font-family: Vazir, yekan;
     text-align: right;
 }
 
-.item{
-    border: 1
-    px
-     solid #eee;
-        padding: 5
-    px
-    ;
+body {
+    background-color: #f4f4f4;
 }
 
-@media (min-width: 992px)
-{
+.white {
+    background-color: #fff;
+}
+
+.header {
+    box-shadow: 2px 2px 3px rgb(0 0 0 / 10%);
+}
+
+.header .header-top {
+    height: 80px;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.header .header-top .link-logo {}
+
+.header .header-top .link-logo img {
+    width: 180px;
+    height: 38px;
+    object-fit: contain;
+}
+
+.header .header-down {
+    height: 44px;
+    border-top: 1px solid #dfdddd;
+}
+
+@media (min-width: 992px) {
     .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9 {
         float: right;
     }
 }
-
-
