@@ -1,0 +1,37 @@
+@font-face {
+    font-family: "yekan";
+    src: url(../fonts/Yekan.eot);
+    src: url(../fonts/Yekan.eot?#iefix) format("embedded-opentype"), url(../fonts/Yekan.woff) format("woff"), url(../fonts/Yekan.ttf) format("truetype"), url(../fonts/Yekan.svg#BYekan) format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Vazir';
+    src: url('../fonts/Vazir-Medium-FD-WOL.eot');
+    src: url('../fonts/Vazir-Medium-FD-WOL.eot?#iefix') format('embedded-opentype'), url('../fonts/Vazir-Medium-FD-WOL.woff2') format('woff2'), url('../fonts/Vazir-Medium-FD-WOL.woff') format('woff'), url('../fonts/Vazir-Medium-FD-WOL.ttf') format('truetype');
+    font-weight: normal;
+}
+
+*,body{
+    font-family: Vazir, yekan;
+    text-align: right;
+}
+
+.item{
+    border: 1
+    px
+     solid #eee;
+        padding: 5
+    px
+    ;
+}
+
+@media (min-width: 992px)
+{
+    .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9 {
+        float: right;
+    }
+}
+
+
