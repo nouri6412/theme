@@ -16,6 +16,7 @@
 *, body {
     font-family: Vazir, yekan;
     text-align: right;
+    color: #706d6d;
 }
 
 body {
@@ -28,6 +29,8 @@ body {
 
 .header {
     box-shadow: 2px 2px 3px rgb(0 0 0 / 10%);
+    width: 100%;
+    overflow: hidden;
 }
 
 .header .header-top {
@@ -48,9 +51,92 @@ body {
     object-fit: contain;
 }
 
+.header .header-top .search-box {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    border: 2px solid #ff6a00;
+    border-radius: 25px;
+    height: 44px;
+    margin-left: 20px;
+}
+
+.header .header-top .search-box select {
+    border: 0;
+    direction: rtl;
+    outline: 0;
+    overflow: visible;
+    margin-top: -1px;
+    line-height: 18px;
+    box-shadow: none;
+    cursor: pointer;
+    margin-right: 10px;
+    padding-left: 8px;
+    border-left: 1px solid #c5c0c0;
+}
+
+.header .header-top .search-box .input-text {
+    width: 100%;
+    margin: 0;
+    border: 0;
+    font-size: 14px;
+    font-family: inherit;
+    height: 18px;
+    padding: 10px 0;
+    outline: 0;
+    overflow: visible;
+    margin-top: -1px;
+    line-height: 18px;
+    outline: 0;
+    -webkit-appearance: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    padding-right: 20px;
+}
+
+.header .header-top .search-box .input-submit {
+    border-radius: 20px 0px 0px 20px;
+    line-height: 39px;
+    width: 162px;
+    background-color: #ff6a00;
+    border: 0;
+    color: #fff;
+}
+
+.header .header-top .search-box .input-submit i {
+    margin-right: 5px;
+    color: #fff;
+}
+
+.header .header-top .search-box .input-submit span {
+    color: #fff;
+}
+
+.header .header-top .top-nav {}
+
+.header .header-top .top-nav a {
+    padding-left: 20px;
+}
+
 .header .header-down {
     height: 44px;
     border-top: 1px solid #dfdddd;
+}
+
+@media (max-width: 900px) {
+    .header .header-top .search-box .input-submit span {
+        display: none;
+    }
+    
+}
+
+@media (max-width: 700px) {
+    .header .header-top {
+        display: block;
+        line-height: 40px;
+    }
+    
 }
 
 @media (min-width: 992px) {
