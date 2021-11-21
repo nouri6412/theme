@@ -128,7 +128,7 @@ body {
 }
 
 .main {
-    display: flex;
+   
     flex-wrap: nowrap;
     justify-content: space-between;
 }
@@ -142,6 +142,7 @@ body {
     min-height: 300px;
     background-color: #fff;
     padding: 10px;
+    float: right;
 }
 
 .main .main-content {
