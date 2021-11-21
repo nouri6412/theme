@@ -30,7 +30,6 @@ body {
 .header {
     box-shadow: 2px 2px 3px rgb(0 0 0 / 10%);
     width: 100%;
-    overflow: hidden;
 }
 
 .header .header-top {
@@ -60,7 +59,7 @@ body {
     border-radius: 25px;
     height: 44px;
     margin-left: 20px;
-
+    flex: 1;
 }
 
 .header .header-top .search-box select {
@@ -115,7 +114,8 @@ body {
 }
 
 .header .header-top .top-nav {
-   
+    flex: 0.5;
+    padding-right: 25px;
 }
 
 .header .header-top .top-nav a {
@@ -126,6 +126,74 @@ body {
     height: 44px;
     border-top: 1px solid #dfdddd;
 }
+
+.main {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.main .main-item {
+    margin: 16px 8px 10px 8px;
+}
+
+.main .main-side-bar {
+    width: 250px;
+    min-height: 300px;
+    background-color: #fff;
+    padding: 10px;
+}
+
+.main .main-content {
+    min-height: 300px;
+    background-color: #fff;
+    flex: 1;
+}
+
+.main-side-bar h3 {
+    font-size: 15px;
+    color: #000;
+    margin-top: 24px;
+    margin-bottom: 6px;
+}
+
+.main-side-bar a {
+    text-decoration: none;
+    color: #706d6d;
+    display: block;
+}
+
+.main-side-bar a:hover{
+    color: #0d6efd;
+}
+
+.accordion-item
+{
+border: none;
+}
+
+.accordion-button
+{
+    text-align: right;
+    direction: rtl;
+    padding: 10px 10px;
+}
+.accordion-button:not(.collapsed){
+    color: #000;
+    background-color: #fff;
+    box-shadow: none;
+}
+
+.accordion-button::after{
+    margin-right: auto;
+    margin-left: unset;
+}
+
+.float-right {
+    float: right;
+}
+
+.float-left {}
 
 @media (max-width: 900px) {
     .header .header-top .search-box .input-submit span {
@@ -138,6 +206,14 @@ body {
         display: block;
         line-height: 40px;
     }
+    .main {
+        display: block;
+    }
+
+    .main .main-side-bar{
+        width: 100%;
+    }
+    
 }
 
 @media (min-width: 992px) {
