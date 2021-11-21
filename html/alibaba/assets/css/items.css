@@ -3,3 +3,32 @@
     padding: 5px
     ;
 }
+
+.product-cats-box{
+    height: 160px;
+    padding: 15px;
+}
+
+.product-cats-box .product-cats-box-content{
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+}
+
+.product-item{
+    height: 478px;
+    padding: 15px;
+}
+
+
+.product-item .product-item-content{
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.product-item:hover .product-item-content{
+    -webkit-box-shadow: 1px 1px 5px rgb(0 0 0 / 10%);
+    box-shadow: 1px 1px 5px rgb(0 0 0 / 10%);
+}
