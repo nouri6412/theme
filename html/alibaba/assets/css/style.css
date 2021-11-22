@@ -213,7 +213,14 @@ border: none;
     .main .main-side-bar{
         width: 100%;
     }
+
+    .menu-wrapper{
+        display: none;
+    }
     
+    .main .main-side-bar{
+        float: none;
+    }
 }
 
 @media (min-width: 992px) {
