@@ -197,7 +197,41 @@ border: none;
 
 .footer{
     background-color: #fff;
+    padding: 40px 75px 75px 75px;
 }
+
+.footer a{
+    padding: 3px;
+}
+
+
+.footer .footer-follow-us{
+    direction: rtl;
+    margin-bottom: 22px;
+}
+
+.footer .footer-follow-us a{
+    font-size: 26px;
+}
+
+.footer .footer-follow-us span{
+
+}
+
+.footer .footer-links{
+    
+}
+
+.footer .footer-links a{
+    display: block;
+}
+
+
+.footer .footer-copy{
+    text-align: center;
+    margin-top: 50px;
+}
+
 
 @media (max-width: 900px) {
     .header .header-top .search-box .input-submit span {
