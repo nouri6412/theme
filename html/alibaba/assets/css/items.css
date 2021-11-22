@@ -10,6 +10,7 @@ a{
    
     padding: 15px;
     position: relative;
+    background-color: #fff;
 }
 
 .product-cats-box .product-cats-box-content {
@@ -53,7 +54,7 @@ a{
     cursor: pointer;
     padding: 15px;
     overflow: hidden;
-    border: 1px solid #e3e2e2;
+    /* border: 1px solid #e3e2e2; */
 }
 
 .product-item:hover .product-item-content {
