@@ -25,27 +25,19 @@
 
     </div>
     <script>
-        function get_sum_for_row(n)
-        {
-            var power=n*n;
-             var sum=(power*(power+1))/2;
-             sum=sum/n;
+        function get_sum_for_row(n) {
+            var power = n * n;
+            var sum = (power * (power + 1)) / 2;
+            sum = sum / n;
         }
         function myFunction() {
-            var n = 9;
+            var n = 4;
             var a = [];
-            var sum_row=get_sum_for_row(n);
-            for (i = 1; i <= n; i++) {
-                a[i - 1] = [];
-                for (j = 1; j <= n; j++) {
-                    var x = i ;
+            var i = 1;
+            var j = 1;
+            var sum_row = get_sum_for_row(n);
+            var power = n * n;
 
-                    if (j % 2 == 1)
-                        x = n - i + 1;
-
-                    a[i - 1][j - 1] = x;
-                }
-            }
             document.getElementById("demo").innerHTML = to_table(a);
         }
 
