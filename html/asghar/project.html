@@ -58,9 +58,6 @@
                         dub = false;
                     }
                     aa[aa.length] = i;
-                  
-
-
 
                     if ( dub) {
                         main_a[main_a.length] = aa;
@@ -76,23 +73,7 @@
             var i, j, z, t, y = 1;
             var power = n * n;
             var sum_row = get_sum_for_row(n, power);
-            // for (i = 1; i <= n; i++) {
-            //     for (j = 1; j <= power; j++) {
-            //         for (z = 1; z <= power; z++) {
-            //             for (t = 1; t <= power; t++) {
-            //                 for (y = 1; y <= power; y++) {
-            //                   var  aa = [];
-            //                     aa[aa.length] = j;
-            //                     aa[aa.length] = z;
-            //                     aa[aa.length] = t;
-            //                     aa[aa.length] = y;
-            //                     a[a.length] = aa;
-            //                 }
-            //             }
-            //         }
-            //     }
 
-            // }
             get_current_rows(b, n, power, sum_row, 1);
 
             console.log(main_a);
