@@ -35,18 +35,22 @@
 
         function add(a, n, power, index) {
             var i = 0;
+
+            if (n < index + 1) {
+                return a;
+            }
+
             if (n == index + 1) {
 
                 var tr = true;
                 for (i = 0; i < n; i++) {
                     if (a[i] < power - 1) {
-                         
+
                         tr = false;
                     }
                 }
-                console.log(tr);
                 if (tr == true) {
-             
+
                     return a;
                 }
 
@@ -56,8 +60,13 @@
                 a[n - (index + 1)] = a[n - (index + 1)] + 1;
             }
             else {
-                a[n - (index + 1)] = 1;
-                a = add(a, n, power, index + 1);
+                if (n == index + 1) {
+                    return a;
+                }
+                else {
+                    a[n - (index + 1)] = 1;
+                    a = add(a, n, power, index + 1);
+                }
             }
             return a;
         }
@@ -86,7 +95,7 @@
 
             console.log(sum);
 
-            for (i = 1; i <= sum; i++) {
+            for (i = 1; i <= 10000000; i++) {
                 a = add(a, n, power, 0);
             }
 
