@@ -34,9 +34,22 @@
         }
 
         function add(a, n, power, index) {
+            var i = 0;
+            if (n == index + 1) {
 
-            if (n == index + 1 && a[n - (index + 1)] >= power ) {
-                return a; 
+                var tr = true;
+                for (i = 0; i < n; i++) {
+                    if (a[i] < power - 1) {
+                         
+                        tr = false;
+                    }
+                }
+                console.log(tr);
+                if (tr == true) {
+             
+                    return a;
+                }
+
             }
 
             if (a[n - (index + 1)] < power - 1) {
