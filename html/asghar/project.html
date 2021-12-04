@@ -36,8 +36,16 @@
             var j = 0;
             if (first < n) {
                 for (i = 1; i <= power; i++) {
-                    b[first - 1] = i;
-                    get_current_rows(b, n, power, sum_row, first + 1);
+                    if (b.includes(i))
+                    {                    
+                        continue;
+                    }
+                    else
+                    {
+                        b[first - 1] = i;
+                        get_current_rows(b, n, power, sum_row, first + 1);
+                        b[first - 1] = 0;
+                    }
                 }
             }
             else {
@@ -45,29 +53,32 @@
                     var aa = [];
                     var sum = 0;
                     var dub = true;
-
+                    if (b.includes(i))
+                    {
+                       continue;
+                    }
                     for (j = 0; j < b.length; j++) {
-                        if (aa.includes(b[j])) {
-                            dub = false;
-                        }
+                        // if (aa.includes(b[j])) {
+                        //     dub = false;
+                        // }
                         aa[aa.length] = b[j];
                         sum += b[j];
                     }
                     sum += i;
-                    if (aa.includes(i) || sum != sum_row) {
+                    if ( sum != sum_row) {
                         dub = false;
                     }
                     aa[aa.length] = i;
 
                     if ( dub) {
-                        main_a[main_a.length] = aa;
+                      // main_a[main_a.length] = aa;
                     }
                 }
             }
         }
         function start() {
             main_a = [];
-            var n = 4;
+            var n = 6;
             var a = [];
             var b = [];
             var i, j, z, t, y = 1;
@@ -76,8 +87,9 @@
 
             get_current_rows(b, n, power, sum_row, 1);
 
-            console.log(main_a);
-            // document.getElementById("demo").innerHTML = to_table(a);
+            console.log(main_a.length);
+            main_a=[];
+            //document.getElementById("demo").innerHTML = to_table(a);
         }
 
         function to_table(a1) {
