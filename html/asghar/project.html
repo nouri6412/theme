@@ -26,6 +26,7 @@
     </div>
     <script>
         var main_a = [];
+        var cols = [];
         function get_sum_for_row(n, power) {
             var sum = (power * (power + 1)) / 2;
             sum = sum / n;
@@ -34,14 +35,19 @@
         function get_current_rows(b, n, power, sum_row, first) {
             var i = 0;
             var j = 0;
+
             if (first < n) {
                 for (i = 1; i <= power; i++) {
-                    if (b.includes(i))
-                    {                    
-                        continue;
+                    if (b.includes(i) || (cols[first - 1].includes(i)&&1==1)) {
+                      
+
+                      continue;
                     }
-                    else
-                    {
+                    else {
+                                                // if(first==1)
+                        // {
+                        //     console.log(i + '   '+first);
+                        // }
                         b[first - 1] = i;
                         get_current_rows(b, n, power, sum_row, first + 1);
                         b[first - 1] = 0;
@@ -50,45 +56,55 @@
             }
             else {
                 for (i = 1; i <= power; i++) {
+                    if (cols[n - 1].includes(i)) {
+                        continue;
+                    }
+
                     var aa = [];
                     var sum = 0;
                     var dub = true;
-                    if (b.includes(i))
-                    {
-                       continue;
+                    if (b.includes(i)) {
+                        continue;
                     }
                     for (j = 0; j < b.length; j++) {
-                        // if (aa.includes(b[j])) {
-                        //     dub = false;
-                        // }
-                        aa[aa.length] = b[j];
-                        sum += b[j];
+                        if (cols[j].includes(b[j])&& 1==1) {
+                            dub = false;
+                        }
+                        else {
+                            cols[j][cols[j].length] = b[j];
+                            aa[aa.length] = b[j];
+                            sum += b[j];
+                        }
                     }
                     sum += i;
-                    if ( sum != sum_row) {
+                    if (sum != sum_row) {
                         dub = false;
                     }
                     aa[aa.length] = i;
 
-                    if ( dub) {
-                      // main_a[main_a.length] = aa;
+                    if (dub) {
+                        main_a[main_a.length] = aa;
                     }
                 }
             }
         }
         function start() {
             main_a = [];
-            var n = 6;
+            var n = 4;
             var a = [];
             var b = [];
             var i, j, z, t, y = 1;
             var power = n * n;
             var sum_row = get_sum_for_row(n, power);
 
-            get_current_rows(b, n, power, sum_row, 1);
+            for (i = 0; i < n; i++) {
+                cols[i] = [];
+            }
 
-            console.log(main_a.length);
-            main_a=[];
+            get_current_rows(b, n, power, sum_row, 1);
+            console.log(cols);
+            console.log(main_a);
+            main_a = [];
             //document.getElementById("demo").innerHTML = to_table(a);
         }
 
