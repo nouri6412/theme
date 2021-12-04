@@ -20,25 +20,83 @@
 
 <body>
 
-    <button onclick="myFunction()">Run</button>
+    <button onclick="start()">Run</button>
     <div id="demo">
 
     </div>
     <script>
-        function get_sum_for_row(n) {
-            var power = n * n;
+        var main_a = [];
+        function get_sum_for_row(n, power) {
             var sum = (power * (power + 1)) / 2;
             sum = sum / n;
+            return sum;
         }
-        function myFunction() {
+        function get_current_rows(b, n, power, sum_row, first) {
+            var i = 0;
+            var j = 0;
+            if (first < n) {
+                for (i = 1; i <= power; i++) {
+                    b[first - 1] = i;
+                    get_current_rows(b, n, power, sum_row, first + 1);
+                }
+            }
+            else {
+                for (i = 1; i <= power; i++) {
+                    var aa = [];
+                    var sum = 0;
+                    var dub = true;
+
+                    for (j = 0; j < b.length; j++) {
+                        if (aa.includes(b[j])) {
+                            dub = false;
+                        }
+                        aa[aa.length] = b[j];
+                        sum += b[j];
+                    }
+                    sum += i;
+                    if (aa.includes(i) || sum != sum_row) {
+                        dub = false;
+                    }
+                    aa[aa.length] = i;
+                  
+
+
+
+                    if ( dub) {
+                        main_a[main_a.length] = aa;
+                    }
+                }
+            }
+        }
+        function start() {
+            main_a = [];
             var n = 4;
             var a = [];
-            var i = 1;
-            var j = 1;
-            var sum_row = get_sum_for_row(n);
+            var b = [];
+            var i, j, z, t, y = 1;
             var power = n * n;
+            var sum_row = get_sum_for_row(n, power);
+            // for (i = 1; i <= n; i++) {
+            //     for (j = 1; j <= power; j++) {
+            //         for (z = 1; z <= power; z++) {
+            //             for (t = 1; t <= power; t++) {
+            //                 for (y = 1; y <= power; y++) {
+            //                   var  aa = [];
+            //                     aa[aa.length] = j;
+            //                     aa[aa.length] = z;
+            //                     aa[aa.length] = t;
+            //                     aa[aa.length] = y;
+            //                     a[a.length] = aa;
+            //                 }
+            //             }
+            //         }
+            //     }
 
-            document.getElementById("demo").innerHTML = to_table(a);
+            // }
+            get_current_rows(b, n, power, sum_row, 1);
+
+            console.log(main_a);
+            // document.getElementById("demo").innerHTML = to_table(a);
         }
 
         function to_table(a1) {
