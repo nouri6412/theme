@@ -27,6 +27,7 @@
     <script>
         var main_a = [];
         var cols = [];
+        var _stop = true;
         function get_sum_for_row(n, power) {
             var sum = (power * (power + 1)) / 2;
             sum = sum / n;
@@ -36,31 +37,16 @@
         function add(a, n, power, index) {
             var i = 0;
 
-            if (n < index + 1) {
-                return a;
-            }
-
-            if (n == index + 1) {
-
-                var tr = true;
-                for (i = 0; i < n; i++) {
-                    if (a[i] < power - 1) {
-
-                        tr = false;
-                    }
-                }
-                if (tr == true) {
-
-                    return a;
-                }
-
-            }
-
             if (a[n - (index + 1)] < power - 1) {
                 a[n - (index + 1)] = a[n - (index + 1)] + 1;
+                console.log(a);
             }
             else {
-                if (n == index + 1) {
+                if (n <= index + 1) {
+                    for (i = 0; i < n; i++) {
+                        a[i] = power - 1;
+                    }
+                    _stop = true;
                     return a;
                 }
                 else {
@@ -77,6 +63,7 @@
             var b = [];
             var i, j, z, t, y = 1;
             var power = n * n;
+            _stop = false;
             var sum_row = get_sum_for_row(n, power);
 
             for (i = 0; i < n; i++) {
@@ -95,8 +82,12 @@
 
             console.log(sum);
 
-            for (i = 1; i <= 10000000; i++) {
+            for (i = 1; i <= sum; i++) {
+                if (_stop == true) {
+                    break;
+                }
                 a = add(a, n, power, 0);
+                
             }
 
             console.log(a);
