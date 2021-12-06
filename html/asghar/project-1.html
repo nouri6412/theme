@@ -26,7 +26,6 @@
     </div>
     <script>
         var main_a = [];
-        var cols = [];
         var _stop = true;
         function get_sum_for_row(n, power) {
             var sum = (power * (power + 1)) / 2;
@@ -39,7 +38,6 @@
 
             if (a[n - (index + 1)] < power - 1) {
                 a[n - (index + 1)] = a[n - (index + 1)] + 1;
-                console.log(a);
             }
             else {
                 if (n <= index + 1) {
@@ -58,6 +56,7 @@
         }
         function start() {
             main_a = [];
+          var  cols = [];
             var n = 4;
             var a = [];
             var b = [];
@@ -68,29 +67,51 @@
 
             for (i = 0; i < n; i++) {
                 a[a.length] = 1;
+                cols[i] = [];
             }
 
-            var sum = 0;
+        var count=0;
 
             for (i = 1; i <= n; i++) {
                 var pow = 1;
                 for (j = 1; j <= i; j++) {
                     pow = pow * power;
                 }
-                sum += pow;
+                count += pow;
             }
 
-            console.log(sum);
+            var sum = 0;
+            var add_to_row = true;
+          
 
-            for (i = 1; i <= sum; i++) {
+            for (i = 1; i <= count; i++) {
                 if (_stop == true) {
                     break;
                 }
+             
                 a = add(a, n, power, 0);
-                
+
+                 sum = 0;
+                 add_to_row = true;
+
+                for (i = 0; i < n; i++) {
+
+                    if (cols[i].indexOf(a[i]) !== -1) {
+                            add_to_row = false;
+                    }
+                    else {
+                        cols[i][cols[i].length] = a[i];
+                    }
+
+                    sum += a[i];
+                }
+
+                if (sum == sum_row && add_to_row == true) {
+                    console.log(a);
+                }
             }
 
-            console.log(a);
+            console.log(cols);
 
             main_a = [];
             //document.getElementById("demo").innerHTML = to_table(a);
