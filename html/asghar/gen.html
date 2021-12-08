@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        table {
+            margin-top: 40px;
+        }
+
+        tr {}
+
+        td {
+            border: 1px solid #e1e1e1;
+            padding: 10px 5px 10px 5px;
+            min-width: 35px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button onclick="start()">Run</button>
+    <div id="demo">
+
+    </div>
+    <script>
+           function get_sum_for_row(n) {
+               var power = n*n;
+            var sum = (power * (power + 1)) / 2;
+            sum = sum / n;
+            return sum;
+        }
+
+        function start() {
+            var n = 9;
+            var a = [];
+            var b = [];
+            var sum_row=get_sum_for_row(n);
+            for (i = 1; i <= n; i++) {
+                a[i - 1] = [];
+                b[i - 1] = [];
+                for (j = 1; j <= n; j++) {
+                    var x = j+((i-1)*n) ;
+                    a[i - 1][j - 1] = x;
+                    b[i - 1][j - 1] = i*j;
+                }
+            }
+            document.getElementById("demo").innerHTML = to_table(a);
+            document.getElementById("demo").innerHTML += to_table(b);
+        }
+
+        function to_table(a1) {
+            var tb = '';
+            tb += '<table>';
+            var i = 0;
+            var j = 0;
+            for (i = 0; i < a1.length; i++) {
+                tb += '<tr>';
+                for (j = 0; j < a1[i].length; j++) {
+                    tb += '<td>';
+                    tb += a1[i][j];
+                    tb += '</td>';
+                }
+                tb += '</tr>';
+            }
+            tb += '</table>';
+            return tb;
+        }
+    </script>
+
+</body>
+
+</html>
