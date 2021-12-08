@@ -47,7 +47,7 @@
                 for (i = 1; i <= n; i++) {
                     a[t][i - 1] = [];
                     for (j = 1; j <= n; j++) {
-                        a[t][i - 1][j - 1] = get_rand(1, 81);
+                        a[t][i - 1][j - 1] = get_rand(1, sum_row);
                     }
                 }
                 document.getElementById("demo").innerHTML += to_table(a[t]);
