@@ -73,7 +73,7 @@
 
         function select_parent(a)
         {
-            
+           
         }
 
         function cut(a,n)
@@ -90,7 +90,7 @@
 
             var sum_rate = 0;
 
-            while (sum_rate <1) {
+            while (sum_rate <2) {
                 sum_rate=0;
                 for (t = 0; t < power; t++) {
                     a[t] = [];
@@ -109,8 +109,8 @@
 
                 }
             }
-
-           // console.log(a_rate);
+            a_rate.sort(function(a, b){return b.rate - a.rate});
+            console.log(a_rate);
 
         }
 
