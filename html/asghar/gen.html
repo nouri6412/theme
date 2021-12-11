@@ -71,13 +71,38 @@
             return rate;
         }
 
-        function select_parent(a)
-        {
-           
+
+        function a_sort(a_rate) {
+            return a_rate.sort(function (a, b) { return b.rate - a.rate });
         }
 
-        function cut(a,n)
-        {
+        function select_parent(a, power) {
+            a = a_sort(a);
+            var parents = [];
+            var childs=[];
+            var i, j = 0;
+            var pow =Math.round(power / 2) ;
+            var add = 1;
+
+            
+            for (i = 0; i < pow; i++) {
+                var ii = i;
+                // if (ii > pow / 4) {
+                //     ii = Math.round(i / 4);
+                //     add = ii;
+                // }
+                var parent_1=a[Math.floor(ii / 2)];
+                var parent_2=a[Math.floor(ii / 2) + add];
+
+            }
+
+
+
+
+            return childs;
+        }
+
+        function cut(a, n) {
 
         }
 
@@ -90,8 +115,8 @@
 
             var sum_rate = 0;
 
-            while (sum_rate <2) {
-                sum_rate=0;
+            while (sum_rate < 3) {
+                sum_rate = 0;
                 for (t = 0; t < power; t++) {
                     a[t] = [];
                     for (i = 1; i <= n; i++) {
@@ -105,12 +130,16 @@
                     a_rate[t]["rate"] = get_rate(a[t], sum_row, n);
                     // document.getElementById("demo").innerHTML += to_table(a[t]);
                     sum_rate += a_rate[t]["rate"];
-                //    document.getElementById("demo").innerHTML += to_table(a_rate[t]);
+                    //    document.getElementById("demo").innerHTML += to_table(a_rate[t]);
 
                 }
             }
-            a_rate.sort(function(a, b){return b.rate - a.rate});
+            a_rate = a_sort(a_rate);
             console.log(a_rate);
+
+            a_rate = select_parent(a_rate,power);
+            console.log(a_rate);
+
 
         }
 
