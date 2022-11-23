@@ -22,23 +22,22 @@ function fetch($_base_url, $_site_url, $_file_name, $_pattern, $out_path = '../'
 
 
     if (strlen($extra_path) > 0) {
-     //  echo $out_path.'----'. $base_url .'----'. $extra_path;
+        //  echo $out_path.'----'. $base_url .'----'. $extra_path;
     }
 
+    $tt = explode($out_path, $file);
+
+
     $file = str_replace($out_path, $base_url . $extra_path, $file);
-
     file_put_contents($file_name, $file);
-
-
-
 
     $urls = [];
 
-    //$pattern="/assets/";
+
     preg_match_all($pattern, $file, $urls);
     if (strlen($extra_path) > 0) {
-       // var_dump($urls);
-        //return;
+        var_dump($urls);
+        //  return;
     }
 
     $path = "";
@@ -55,22 +54,23 @@ function fetch($_base_url, $_site_url, $_file_name, $_pattern, $out_path = '../'
             $path .= $vir . $ex[$x];
             $vir = "/";
             if (!file_exists(stream_resolve_include_path($path))) {
-                if (strlen($extra_path) > 0) {
-                    //  echo $path . '<br>';
-                } else {
-                    mkdir($path, 0777, true);
-                }
+                mkdir($path, 0777, true);
             }
         }
 
-        $fff =preg_split('/ (?|#) /', $ex[count($ex) - 1]);
+        $fff = preg_split('/ (?|#) /', $ex[count($ex) - 1]);
 
         $ex_pt = str_replace($base_url, '', $path);
         $path .= '/' . $fff[0];
 
         if (strlen($fff[0]) > 4 && substr($fff[0], -4) == '.css') {
             // echo $ex_pt . '<br>';
-            fetch($base_url, $base_url . $path, $fff[0], $pattern, '../', $ex_pt . '/');
+           // fetch($base_url, $base_url . $path, $fff[0], $pattern, '../', $ex_pt . '/');
+
+            if (!file_exists(stream_resolve_include_path($path))) {
+                file_put_contents($path, fopen($base_file, 'r'));
+            }
+
         } else {
             if (!file_exists(stream_resolve_include_path($path))) {
                 file_put_contents($path, fopen($base_file, 'r'));
@@ -78,12 +78,14 @@ function fetch($_base_url, $_site_url, $_file_name, $_pattern, $out_path = '../'
         }
     }
 
-    $file = @file_get_contents($file_name);
+    if (strlen($extra_path) == 0) {
+        $file = @file_get_contents($file_name);
 
 
-    $file = str_replace($base_url, '', $file);
+        $file = str_replace($base_url, '', $file);
 
-    file_put_contents($file_name, $file);
+        file_put_contents($file_name, $file);
+    }
 }
 fetch($base_url, $site_url, $file_name, $pattern);
 // if (!file_exists(stream_resolve_include_path('new-folder'))) {
