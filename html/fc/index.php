@@ -80,7 +80,7 @@ function fetch($_base_url, $_site_url, $_file_name, $_pattern, $out_path = '../'
             }
             $sub_file = @file_get_contents($path);
             $sub_urls=[];
-            $sub_pattern = "/url\(\"[^\"]+(\.eot|\.woff)+\"\)|url\(\"[^\"]+(\.eot|\.woff)+[^\"]+\"\)/";
+            $sub_pattern = "/url\(\"[^\"]+(\.eot|\.woff|\.ttf|\.png|\.jpg|\.jpeg|\.gif|\.svg)+\"\)|url\(\"[^\"]+(\.eot|\.woff|\.ttf|\.png|\.jpg|\.jpeg|\.gif|\.svg)+[^\"]+\"\)/";
             preg_match_all($sub_pattern, $sub_file, $sub_urls);
            var_dump($sub_urls);
 
