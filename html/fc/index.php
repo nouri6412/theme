@@ -1,5 +1,7 @@
 <?php
 set_time_limit(6000);
+$links=[];
+
 $base_url = 'https://themes.pixelstrap.com/fastkart/';
 
 $site_url = 'https://themes.pixelstrap.com/fastkart/front-end/index.html';
@@ -9,6 +11,7 @@ $pattern = "/\"https:\/\/themes.pixelstrap.com\/fastkart\/[^\"]+\"/"; //  patter
 
 function fetch($_base_url, $_site_url, $_file_name, $_pattern, $out_path = '../', $extra_path = '')
 {
+    global $links;
     $base_url = $_base_url;
     $site_url = $_site_url;
     $file_name = $extra_path . $_file_name;
@@ -36,7 +39,7 @@ function fetch($_base_url, $_site_url, $_file_name, $_pattern, $out_path = '../'
 
     preg_match_all($pattern, $file, $urls);
     if (strlen($extra_path) > 0) {
-        var_dump($urls);
+     //   var_dump($urls);
         //  return;
     }
 
@@ -63,17 +66,27 @@ function fetch($_base_url, $_site_url, $_file_name, $_pattern, $out_path = '../'
         $ex_pt = str_replace($base_url, '', $path);
         $path .= '/' . $fff[0];
 
-        if (strlen($fff[0]) > 4 && substr($fff[0], -4) == '.css') {
+        if (strlen($fff[0]) > 5 && substr($fff[0], -5) == '.html') {
+            // echo $ex_pt . '<br>';
+           // fetch($base_url, $base_url . $path, $fff[0], $pattern, '../', $ex_pt . '/');
+
+        }
+      else  if (strlen($fff[0]) > 4 && substr($fff[0], -4) == '.css') {
             // echo $ex_pt . '<br>';
            // fetch($base_url, $base_url . $path, $fff[0], $pattern, '../', $ex_pt . '/');
 
             if (!file_exists(stream_resolve_include_path($path))) {
                 file_put_contents($path, fopen($base_file, 'r'));
             }
+            $sub_file = @file_get_contents($path);
+            $sub_urls=[];
+            $sub_pattern = "/url\(\"[^\"]+(\.eot|\.woff)+[^\"]|.+\"\)/";
+            preg_match_all($sub_pattern, $sub_file, $sub_urls);
+           var_dump($sub_urls);
 
         } else {
             if (!file_exists(stream_resolve_include_path($path))) {
-                file_put_contents($path, fopen($base_file, 'r'));
+               // file_put_contents($path, fopen($base_file, 'r'));
             }
         }
     }
