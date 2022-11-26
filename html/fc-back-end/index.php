@@ -32,7 +32,9 @@ function fetch($_base_url, $_site_url, $_file_name, $_pattern, $out_path = '../'
 
     $file = @file_get_contents($file_name);
 
-
+    if (strlen($file) == 0) {
+        return;
+    }
 
 
     if (strlen($extra_path) > 0) {
@@ -87,14 +89,12 @@ function fetch($_base_url, $_site_url, $_file_name, $_pattern, $out_path = '../'
         } else  if (strlen($fff[0]) > 4 && substr($fff[0], -4) == '.css') {
             // echo $ex_pt . '<br>';
             // fetch($base_url, $base_url . $path, $fff[0], $pattern, '../', $ex_pt . '/');
-            if (!file_exists(stream_resolve_include_path($path.'.map'))) {
+            if (!file_exists(stream_resolve_include_path($path . '.map'))) {
 
-                $map = @file_get_contents($base_url . '/' . $path.'.map');
-                if(strlen($map)>4)
-                {
-                    file_put_contents($path.'.map', $map);
+                $map = @file_get_contents($base_url . '/' . $path . '.map');
+                if (strlen($map) > 4) {
+                    file_put_contents($path . '.map', $map);
                 }
-
             }
             if (!file_exists(stream_resolve_include_path($path))) {
                 file_put_contents($path, fopen($base_file, 'r'));
@@ -137,8 +137,9 @@ function fetch($_base_url, $_site_url, $_file_name, $_pattern, $out_path = '../'
                             $path_1 .= $vir_1 . $ex_1[$x_1];
                             $vir_1 = "/";
                             if (!file_exists(stream_resolve_include_path($path_1))) {
-
-                                mkdir($path_1, 0777, true);
+                                if (strlen($path_1) > 0) {
+                                    mkdir($path_1, 0777, true);
+                                }
                             }
                         }
                     }
@@ -156,14 +157,12 @@ function fetch($_base_url, $_site_url, $_file_name, $_pattern, $out_path = '../'
                 }
             }
         } else {
-            if (strlen($fff[0]) > 3 && substr($fff[0], -3) == '.js')
-            {
-                if (!file_exists(stream_resolve_include_path($path.'.map'))) {
-                    $map = @file_get_contents($base_url . '/' . $path.'.map');
-                    
-                    if(strlen($map)>4)
-                    {
-                        file_put_contents($path.'.map', $map);
+            if (strlen($fff[0]) > 3 && substr($fff[0], -3) == '.js') {
+                if (!file_exists(stream_resolve_include_path($path . '.map'))) {
+                    $map = @file_get_contents($base_url . '/' . $path . '.map');
+
+                    if (strlen($map) > 4) {
+                        file_put_contents($path . '.map', $map);
                     }
                 }
             }
