@@ -2,10 +2,10 @@
 set_time_limit(6000);
 $links = [];
 
-$base_url = 'https://themes.pixelstrap.com/fastkart/';
+$base_url = 'https://themes.pixelstrap.com/fastkart/back-end/';
 
 $file_name = 'index.html';
-$root = 'https://themes.pixelstrap.com/fastkart/back-end/';
+$root     = 'https://themes.pixelstrap.com/fastkart/back-end/';
 $site_url = $root . $file_name;
 $index_fetch = 1;
 
@@ -17,7 +17,7 @@ $links[$file_name] = $file_name;
 
 $pattern = "/\"https:\/\/themes.pixelstrap.com\/fastkart\/[^\"]+\"/"; //  pattern=> \"XXX[^\"]+\"
 
-function fetch($_base_url, $_site_url, $_file_name, $_pattern, $out_path = '../', $extra_path = '')
+function fetch($_base_url, $_site_url, $_file_name, $_pattern, $out_path = 'assets/', $extra_path = '')
 {
     echo '<div>' . $_base_url . '---' . $_site_url . '...' . $_file_name . '...' . $_pattern . '</div>';
     global $links, $root, $index_fetch;
@@ -41,10 +41,8 @@ function fetch($_base_url, $_site_url, $_file_name, $_pattern, $out_path = '../'
         //  echo $out_path.'----'. $base_url .'----'. $extra_path;
     }
 
-    $tt = explode($out_path, $file);
 
-
-    $file = str_replace($out_path, $base_url . $extra_path, $file);
+    $file = str_replace($out_path, $base_url . $extra_path.'assets/', $file);
     file_put_contents($file_name, $file);
 
     $urls = [];
